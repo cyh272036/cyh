@@ -298,7 +298,7 @@ header {
     }
 
     .hi__cuboid {
-        @include cuboid(900px, 90px, 90px, black);
+        @include cuboid(900px, 90px, 90px, #121212);
         margin: 30px 0;
     }
 
@@ -311,7 +311,7 @@ header {
         &.face--top,
         &.face--bottom {
             background: white;
-            color: black;
+            color: #121212;
         }
     }
 
@@ -490,7 +490,7 @@ header {
             width: 100%;
             font-family: 'Bandeins-Strange';
             font-size: 4rem;
-            color: #121212;
+            color: black;
             margin-bottom: 10px;
         }
 
@@ -501,7 +501,7 @@ header {
             font-size: 1.1rem;
             text-align: center;
             font-family: 'pretendard';
-            color: #121212;
+            color: black;
 
             opacity: 0;
 
