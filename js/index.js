@@ -167,7 +167,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-
     //scrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
