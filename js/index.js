@@ -101,26 +101,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /// 페이지 스크롤
+    // const elm = document.querySelectorAll('.div');
+    // const elmCount = elm.length;
+    // elm.forEach(function (item, index) {
+    //     item.addEventListener('mousewheel', function (event) {
+    //         event.preventDefault();
+    //         let delta = 0;
+
+    //         if (!event) event = window.event;
+    //         if (event.wheelDelta) {
+    //             delta = event.wheelDelta / 120;
+    //             if (window.opera) delta = -delta;
+    //         }
+    //         else if (event.detail)
+    //             delta = -event.detail / 3;
+
+    //         let moveTop = window.scrollY;
+    //         let elmSelector = elm[index];
+
+    //         // wheel down : move to next section
+    //         if (delta < 0) {
+    //             if (elmSelector !== elmCount - 1) {
+    //                 try {
+    //                     moveTop = window.pageYOffset + elmSelector.nextElementSibling.getBoundingClientRect().top;
+    //                 } catch (e) { }
+    //             }
+    //         }
+    //         // wheel up : move to previous section
+    //         else {
+    //             if (elmSelector !== 0) {
+    //                 try {
+    //                     moveTop = window.pageYOffset + elmSelector.previousElementSibling.getBoundingClientRect().top;
+    //                 } catch (e) { }
+    //             }
+    //         }
+
+    //         const body = document.querySelector('html');
+    //         window.scrollTo({ top: moveTop, left: 0, behavior: 'smooth' });     
+    //     });
+    // });
+
     const elm = document.querySelectorAll('.div');
     const elmCount = elm.length;
-    elm.forEach(function (item, index) {
-        item.addEventListener('mousewheel', function (event) {
-            event.preventDefault();
-            let delta = 0;
 
-            if (!event) event = window.event;
-            if (event.wheelDelta) {
-                delta = event.wheelDelta / 120;
-                if (window.opera) delta = -delta;
-            }
-            else if (event.detail)
-                delta = -event.detail / 3;
+    let isScrolling = false;
+
+    elm.forEach(function (item, index) {
+        item.addEventListener('wheel', function (event) {
+            event.preventDefault();
+
+            if (isScrolling) return;
+
+            isScrolling = true;
+            requestAnimationFrame(function () {
+                isScrolling = false;
+            });
+
+            let delta = event.deltaY || event.detail || -event.wheelDelta;
 
             let moveTop = window.scrollY;
             let elmSelector = elm[index];
 
             // wheel down : move to next section
-            if (delta < 0) {
+            if (delta > 0) {
                 if (elmSelector !== elmCount - 1) {
                     try {
                         moveTop = window.pageYOffset + elmSelector.nextElementSibling.getBoundingClientRect().top;
@@ -136,8 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
-            const body = document.querySelector('html');
-            window.scrollTo({ top: moveTop, left: 0, behavior: 'smooth' });     
+            window.scrollTo({ top: moveTop, left: 0, behavior: 'smooth' });
         });
     });
 
@@ -147,25 +189,42 @@ document.addEventListener("DOMContentLoaded", function () {
     const navDots = document.querySelectorAll('.nav-dot');
     const navList = document.querySelectorAll('.nav ul li a');
 
+    const initialActiveIndex = 0;
+    setActiveClass(initialActiveIndex);
+    
+    // 함수를 만들어 현재 액티브 클래스를 설정하고 스크롤 이벤트에 연결
+    function setActiveClass(index) {
+        navDots.forEach(dot => dot.classList.remove('active'));
+        navDots[index].classList.add('active');
+        navList.forEach(li => li.classList.remove('active'));
+        navList[index].classList.add('active');
+    }
+    
+    // 스크롤 이벤트 핸들러
     window.addEventListener('scroll', function () {
         const sc = window.scrollY;
-
+    
         divElements.forEach((div, index) => {
             const position = div.getBoundingClientRect();
             if (position.top <= 150 && position.bottom >= 150) {
-                navDots.forEach(dot => dot.classList.remove('active'));
-                navDots[index].classList.add('active');
-                navList.forEach(li => li.classList.remove('active'));
-                navList[index].classList.add('active');                
+                setActiveClass(index);
             }
         });
-
-        if(sc > 3600 ){
-            $('.drawing path').css({animation: 'dash 3s ease-in-out forwards'})
-        }else {
-            $('.drawing path').css({animation: 'none'})
+    
+        if (sc > 3600) {
+            $('.drawing path').css({ animation: 'dash 3s ease-in-out forwards' });
+        } else {
+            $('.drawing path').css({ animation: 'none' });
         }
     });
+    
+    // 페이지 로드 시 첫 번째 요소에 액티브 클래스 설정
+    document.addEventListener('DOMContentLoaded', function () {
+        // 페이지에 처음 들어왔을 때, 원하는 인덱스에 해당하는 액티브 클래스 설정
+        const initialActiveIndex = 0;  // 여기에 원하는 초기 인덱스를 설정
+        setActiveClass(initialActiveIndex);
+    });
+    
 
     //scrollTrigger
     gsap.registerPlugin(ScrollTrigger);
@@ -183,15 +242,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .from(".works", { y: 30 }, 0.7)
         .from(".profile", { y: 0 }, 0.5)
         .from(".act", { y: 0 }, 0.5)
-        .from(".develop", { y: 0 }, 0.5);    
-   
+        .from(".develop", { y: 0 }, 0.5);
+
     ScrollTrigger.create({
         trigger: '.s_02',
         start: "top 80%",
         end: "bottom 20%",
-        animation: t2, 
-        once: false, 
-        toggleActions:"restart restart restart restart",
+        animation: t2,
+        once: false,
+        toggleActions: "restart restart restart restart",
     });
 
     //section03 scroll event
@@ -204,14 +263,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     t3.from(".project_wrap", { y: 30 }, 0.2)
- 
+
     ScrollTrigger.create({
         trigger: '.s_03',
-        start: "top 80%", 
-        end: "bottom 20%", 
-        animation: t3, 
+        start: "top 80%",
+        end: "bottom 20%",
+        animation: t3,
         once: false,
-        toggleActions:"restart restart restart restart",
+        toggleActions: "restart restart restart restart",
     });
 
     //section04 scroll event
@@ -225,15 +284,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     t4.from(".index", { y: 30 }, 0.5)
         .from(".index_list", { y: 30 }, 0.7)
-        .from(".animated-title", { y: 30 }, 0.7); 
-  
+        .from(".animated-title", { y: 30 }, 0.7);
+
     ScrollTrigger.create({
         trigger: '.s_04',
         start: "top 80%",
-        end: "bottom 20%", 
-        animation: t4, 
-        once: false, 
-        toggleActions:"restart restart restart restart",
+        end: "bottom 20%",
+        animation: t4,
+        once: false,
+        toggleActions: "restart restart restart restart",
     });
 
 
