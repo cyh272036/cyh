@@ -267,7 +267,7 @@ header #header_wrap .nav ul .first {
   flex-direction: column;
 }
 .s_02 .about_wrap .inner {
-  font-size: 6.5rem;
+  font-size: 5.5rem;
   line-height: 10rem;
   text-align: center;
   margin-top: -10px;
@@ -286,7 +286,7 @@ header #header_wrap .nav ul .first {
   color: #fff;
 }
 .s_02 .about_wrap .inner h3 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-top: -10px;
   font-family: "Bandeins-Strange";
   animation: motion 0.5s linear 0s infinite alternate;
