@@ -260,219 +260,55 @@ header #header_wrap .nav ul .first {
   overflow: hidden;
 }
 .s_02 .about_wrap {
-  width: 1400px;
-  height: 60vh;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.s_02 .about_wrap .inner {
-  font-size: 5.5rem;
-  line-height: 10rem;
-  text-align: center;
-  margin-top: -10px;
-  width: 100%;
-  color: #e1e1e1;
-}
-.s_02 .about_wrap .inner h1 {
-  font-family: "Bandeins-Strange";
-  font-weight: bold;
-}
-.s_02 .about_wrap .inner h1 span {
-  font-family: "Poppins";
-  font-style: italic;
-  font-weight: 800;
-  text-decoration: underline;
-  color: #fff;
-}
-.s_02 .about_wrap .inner h3 {
-  font-size: 3rem;
-  margin-top: -10px;
-  font-family: "Bandeins-Strange";
-  animation: motion 0.5s linear 0s infinite alternate;
-}
-.s_02 .about_wrap .inner h3 span {
-  margin-right: 5px;
-}
-@keyframes motion {
-  0% {
-    margin-top: 0px;
-  }
-  100% {
-    margin-top: 10px;
-  }
-}
-.s_02 .about_wrap .inner_right {
-  width: auto;
-}
-.s_02 .about_wrap .inner_right p {
-  text-align: left;
-  font-size: 1.5rem;
-  font-family: "pretendard";
-}
-.s_02 .profile {
-  position: absolute;
-  bottom: -30%;
-  left: 0;
-  width: 33.33%;
+  width: 80%;
   height: 60%;
-  background-color: #FFAD04;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-.s_02 .profile .headline {
-  padding-top: 8%;
-  width: 100%;
-  font-family: "Bandeins-Strange";
-  font-size: 4rem;
-  color: #121212;
-  margin-bottom: 10px;
-}
-.s_02 .profile .profile_inner {
-  width: 85%;
-  height: 60%;
-  margin: 0 auto;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-end;
-  color: #121212;
+}
+.s_02 .about_wrap .left_thumb {
+  width: 30%;
+  height: 100%;
   position: relative;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
+  overflow: hidden;
 }
-.s_02 .profile .profile_inner .inner_list_me {
-  width: 37%;
-  height: 85%;
-  background-image: url(../img/my.jpg);
-  background-size: cover;
-  background-position: center;
-  background-color: saddlebrown;
+.s_02 .about_wrap .left_thumb img {
+  width: 100%;
+  filter: grayscale(20%);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
-.s_02 .profile .profile_inner .list_wrap {
-  width: auto;
-  height: auto;
-  font-size: 1.1rem;
+.s_02 .about_wrap .right_text {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.s_02 .about_wrap .right_text .text_box {
+  width: 50%;
+  height: 35%;
   text-align: left;
-  font-family: "pretendard", sans-serif;
+  background-color: darkgoldenrod;
 }
-.s_02 .profile .profile_inner .list_wrap .inner_list {
-  margin-bottom: 15px;
+.s_02 .about_wrap .right_text .text_box h1 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
 }
-.s_02 .profile .profile_inner .list_wrap .inner_list span {
-  font-size: 1rem;
-}
-.s_02 .profile .profile_inner .list_wrap .inner_list:last-of-type {
-  margin-bottom: 0;
-}
-.s_02 .profile:hover {
-  bottom: 0;
-}
-.s_02 .profile:hover .profile_inner {
-  opacity: 1;
-}
-.s_02 .act {
-  position: absolute;
-  bottom: -40%;
-  left: 33.33%;
-  width: 33.33%;
-  height: 70%;
-  background-color: #FE3C00;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-.s_02 .act .headline {
-  padding-top: 8%;
-  width: 100%;
-  font-family: "Bandeins-Strange";
-  font-size: 4rem;
-  color: black;
-  margin-bottom: 10px;
-}
-.s_02 .act .act_inner {
-  width: 85%;
-  height: 80%;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  text-align: center;
-  font-family: "pretendard";
-  color: black;
-  opacity: 0;
-}
-.s_02 .act .act_inner .inner_list {
-  margin-bottom: 15px;
-}
-.s_02 .act .act_inner .inner_list h3 {
-  margin-bottom: 3px;
-  text-decoration: underline;
-}
-.s_02 .act .act_inner .inner_list .import {
-  font-weight: 700;
-}
-.s_02 .act:hover {
-  bottom: 0;
-}
-.s_02 .act:hover .act_inner {
-  opacity: 1;
-}
-.s_02 .develop {
-  position: absolute;
-  bottom: -50%;
-  right: 0;
-  width: 33.33%;
-  height: 80%;
-  background-color: #01C3FF;
-  transition: all 0.4s ease-in-out;
-  cursor: pointer;
-}
-.s_02 .develop .headline {
-  padding-top: 8%;
-  width: 100%;
-  font-family: "Bandeins-Strange";
-  font-size: 4rem;
-  color: #121212;
-  margin-bottom: 15px;
-}
-.s_02 .develop .develop_inner {
-  width: 80%;
-  height: 80%;
-  margin: 0 auto;
-  font-family: "pretendard";
+.s_02 .about_wrap .right_text .text_box table {
   font-size: 1.2rem;
-  color: #121212;
-  opacity: 0;
-}
-.s_02 .develop .develop_inner .inner_list {
-  margin-bottom: 50px;
-}
-.s_02 .develop .develop_inner .inner_list h3 {
-  margin-bottom: 10px;
-  text-decoration: underline;
-}
-.s_02 .develop .develop_inner .inner_list .import {
   word-break: keep-all;
-  font-weight: 400;
-  line-height: 1.6rem;
+  font-family: "pretendard";
 }
-.s_02 .develop .develop_inner .inner_list .tech {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 10px;
+.s_02 .about_wrap .right_text .text_box table th {
+  padding-right: 20px;
+  padding-bottom: 5px;
 }
-.s_02 .develop .develop_inner .inner_list .tech span {
-  word-break: keep-all;
-  border: 1px solid rgb(230, 248, 250);
-  border-radius: 10px;
-  padding: 5px 10px;
-  background-color: #01C3FF;
-  color: #fff;
-  font-size: 1rem;
-  line-height: 2.2rem;
-}
-.s_02 .develop:hover {
-  bottom: 0;
-}
-.s_02 .develop:hover .develop_inner {
-  opacity: 1;
+.s_02 .about_wrap .right_text .text_box table td {
+  padding-bottom: 5px;
 }
 
 .s_03 .project_wrap {
